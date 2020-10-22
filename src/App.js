@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, Redirect } from '@reach/router';
+import Homepage from './components/Homepage';
+import Dashboard from './components/Dashboard';
+import NotFound from './components/common/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Homepage path='/' />
+      <Homepage path='/home' />
+      <Dashboard path='dashboard' />
+      <NotFound path='not-found' />
+      <Redirect default noThrow from='/*' to='/not-found' />
+    </Router>
   );
 }
 
