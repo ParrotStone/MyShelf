@@ -8,20 +8,22 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "autoprefixer": "^10.0.1",
+    "cogo-toast": "^4.2.3",
     "postcss": "^8.1.2",
     "postcss-cli": "^8.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^3.11.0",
     "react-scripts": "3.4.3",
     "tailwindcss": "^1.9.5"
   },
   "scripts": {
-    "start": "react-scripts start && yarn run watch:css",
+    "start": "yarn run watch:css && react-scripts start",
     "build": "yarn run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:css": "postcss src/styles/index.css -o src/styles/styles.css -w",
-    "build:css": "postcss src/styles/index.css -o src/styles/styles.css"
+    "watch:css": "postcss src/styles/index.css -o src/styles/styles.css",
+    "build:css": "export NODE_ENV='production' && postcss src/styles/index.css -o src/styles/styles.css"
   },
   "eslintConfig": {
     "extends": "react-app"

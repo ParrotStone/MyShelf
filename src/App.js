@@ -3,6 +3,7 @@ import { Router, Redirect } from '@reach/router';
 import Homepage from './components/Homepage';
 import Dashboard from './components/Dashboard';
 import NotFound from './components/common/NotFound';
+import './styles/styles.css';
 
 function App() {
   return (
