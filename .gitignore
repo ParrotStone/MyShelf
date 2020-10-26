@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# tailwindcss compiled css(unnecessary since it's gonna get generated again on start/build again)
 /src/styles/styles.css
 
 # dependencies
