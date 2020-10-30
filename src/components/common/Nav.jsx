@@ -5,15 +5,14 @@ import Logo from './Logo';
 
 const Nav = (props) => {
   const [navShown, setNavShown] = useState(false);
-  console.log(navShown);
   const navLinksClasses = `text-lg ${
     navShown ? 'visible translate-x-none' : 'invisible translate-x-screen'
-  } bg-gray-100 text-center p-6 w-full h-screen fixed top-0 right-0 flex flex-col items-cener justify-evenly transition-all duration-500 ease-out sm:static sm:visible sm:translate-x-none sm:bg-white sm:h-auto sm:block sm:mt-10 lg:text-right lg:max-w-1/2 xl:mt-8`;
+  } text-center bg-gray-100 p-6 w-full h-screen fixed top-0 right-0 flex flex-col items-cener justify-evenly transition-all duration-500 ease-out sm:static sm:visible sm:translate-x-none sm:bg-white sm:h-auto sm:block sm:mt-6 lg:text-right lg:max-w-1/2 lg:mt-2 xl:mt-4`;
 
   return (
-    <div className='container mx-auto text-left sm:text-center xl:text-left lg:flex lg:justify-between'>
-      <div className='m-4 flex justify-between sm:block xl:ml-8'>
-        <Logo logoStyles='inline-block max-w-1/4 sm:max-w-1/2 lg:max-w-full xl:w-48' />
+    <div className='container mx-auto text-left sm:text-center lg:text-left lg:flex lg:justify-between'>
+      <div className='m-4 flex justify-between sm:block lg:max-w-1/3 xl:ml-8'>
+        <Logo logoStyles='inline-block max-w-1/4 sm:max-w-1/2 lg:max-w-1/3' />
         <button className='sm:hidden' onClick={() => setNavShown(true)}>
           <AiOutlineMenu className='text-4xl text-primary' />
         </button>
