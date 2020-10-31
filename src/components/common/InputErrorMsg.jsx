@@ -2,7 +2,7 @@ import React from 'react';
 
 const InputErrorMsg = ({ msg }) => {
   return (
-    <span className='text-base text-red-600 mt-6'>
+    <span className='text-sm text-red-600 mt-6'>
       <span role='img' aria-label='cross mark'>
         ❌
       </span>{' '}

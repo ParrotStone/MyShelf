@@ -35,7 +35,7 @@ const Nav = (props) => {
           How It Works
         </Link>
         <Link
-          to='/about'
+          to='/about-us'
           className='text-gray-800 transition-all duration-300 ease-out mr-8 hover:text-secondary'
         >
           About Us

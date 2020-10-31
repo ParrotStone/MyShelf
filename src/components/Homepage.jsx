@@ -31,8 +31,6 @@ const Homepage = (props) => {
     },
   });
 
-  const errors = Object.keys(formik.errors).length;
-
   // Check this code later on
   // ------------------------
   // useEffect(() => {
@@ -132,13 +130,14 @@ const Homepage = (props) => {
             <div className='w-full mb-4 lg:mb-0 lg:w-3/4 lg:mr-4'>
               <input
                 name='searchText'
-                className={`bg-gray-200 appearance-none h-12 w-full border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:shadow-outline ${
-                  errors ? 'border-red-600' : ''
+                className={`bg-gray-200 appearance-none h-12 w-full border-2 border-gray-600 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
+                  formik.touched.searchText && formik.errors.searchText
+                    ? 'border-red-600'
+                    : ''
                 }`}
                 type='text'
                 placeholder='Book title...'
                 {...formik.getFieldProps('searchText')}
-                value={formik.values.searchText}
               />
               {formik.touched.searchText && formik.errors.searchText ? (
                 <InputErrorMsg msg={formik.errors.searchText} />
@@ -148,7 +147,9 @@ const Homepage = (props) => {
               <button
                 type='submit'
                 className={`${
-                  errors ? 'opacity-50 cursor-not-allowed' : ''
+                  formik.errors.searchText
+                    ? 'opacity-50 cursor-not-allowed'
+                    : ''
                 } inline-block h-12 py-3 px-6 text-white text-lg font-bold bg-green-500 transition-all duration-300 text-center ease-out hover:bg-green-600 rounded w-full`}
               >
                 Search
