@@ -1,6 +1,6 @@
 import React from 'react';
 import { a } from '@reach/router';
-import { FaTwitter, FaGithub } from 'react-icons/fa';
+import { AiFilltwitterCIrcle, AiFillGithub } from 'react-icons/ai';
 import Nav from './common/Nav';
 
 const AboutUs = (props) => {
@@ -23,10 +23,10 @@ const AboutUs = (props) => {
                 href='https://twitter.com/@abdoalihuss'
                 className='inline-block mr-6'
               >
-                <FaTwitter className='text-2xl text-primary' />
+                <AiFilltwitterCIrcle className='text-2xl text-primary' />
               </a>
               <a href='https://github.com/parrotstone' className='inline-block'>
-                <FaGithub className='text-2xl text-primary' />
+                <AiFillGithub className='text-2xl text-primary' />
               </a>
             </div>
           </div>
@@ -44,10 +44,10 @@ const AboutUs = (props) => {
                 href='https://twitter.com/@a__ibrahiim'
                 className='inline-block mr-6'
               >
-                <FaTwitter className='text-2xl text-primary' />
+                <AiFilltwitterCIrcle className='text-2xl text-primary' />
               </a>
               <a href='https://github.com/woodyinho' className='inline-block'>
-                <FaGithub className='text-2xl text-primary' />
+                <AiFillGithub className='text-2xl text-primary' />
               </a>
             </div>
           </div>

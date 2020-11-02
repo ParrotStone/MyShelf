@@ -4,7 +4,9 @@
 /src/styles/styles.css
 
 # dependencies
-/node_modules
+# /node_modules
+# /email-activation-back-end-ssr/node_modules
+node_modules
 /.pnp
 .pnp.js
 

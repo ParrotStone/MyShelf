@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MyShelf is the place where you can find reviews about your favourite books and also discover new books with their reviews and ratings. MyShelf helps you keep track of books you are reading or want to read and organize books into different shelves. It also helps you connect with other book lovers and find out about new trending books."
+    />
+    <!-- Use here template variables to determine the success state and change the title based on it -->
+    <!-- for example => MyShelf | Email Activation ${succeeded/failed} -->
+    <title>MyShelf | Email Activation</title>
+    <link rel="apple-touch-icon" href="logo192.png" />
+    <!-- Use tailwind CDN here instead of course with the --primary || OR the damn transformed CSS here - configure it later -->
+    <link rel="stylesheet" href="./output.min.css" />
+    <link
+      rel="preload"
+      href="Nunito-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <!-- In case the user is disabling JavaScript -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- Logo & menu-bars(for mobile screens) -->
+    <div
+      class="container mx-auto text-left sm:text-center lg:text-left lg:flex lg:justify-between"
+    >
+      <div class="m-4 flex justify-between sm:block lg:max-w-1/3 xl:ml-8">
+        <a href="https://myshelf.netlify.app/">
+          <img
+            src="./myshelf-logo.svg"
+            alt="MyShelf Logo"
+            width="3000"
+            height="1200"
+            loading="eager"
+            class="inline-block max-w-1/4 sm:max-w-1/2 lg:max-w-1/3"
+          />
+        </a>
+        <button class="sm:hidden" onclick="toggleSideTab(this)">
+          <div class="menu-bars text-4xl">
+            <span class="bg-primary"></span>
+            <span class="bg-primary"></span>
+            <span class="bg-primary"></span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Nav links area -->
+      <div
+        class="side-tab text-lg invisible translate-x-screen text-center bg-gray-100 p-6 w-full h-screen fixed top-0 right-0 flex flex-col items-cener justify-evenly transition-all duration-500 ease-out sm:static sm:visible sm:translate-x-none sm:bg-white sm:h-auto sm:block sm:mt-6 lg:text-right lg:max-w-1/2 lg:mt-2 xl:mt-4"
+      >
+        <button class="sm:hidden" onclick="toggleSideTab(this)">
+          <div class="close-x-icon text-4xl text-primary text-left">X</div>
+        </button>
+        <a
+          href="https://myshelf.netlify.app/"
+          class="text-gray-800 transition-all duration-300 ease-out mr-8 hover:text-secondary"
+        >
+          Home
+        </a>
+        <a
+          href="https://myshelf.netlify.app/how-it-works"
+          class="text-gray-800 transition-all duration-300 ease-out mr-8 hover:text-secondary"
+        >
+          How It Works
+        </a>
+        <a
+          href="https://myshelf.netlify.app/about-us"
+          class="text-gray-800 transition-all duration-300 ease-out mr-8 hover:text-secondary"
+        >
+          About Us
+        </a>
+        <a
+          href="https://myshelf.netlify.app/login"
+          class="text-gray-800 transition-all duration-300 ease-out mr-8 hover:text-secondary"
+        >
+          Login
+        </a>
+      </div>
+    </div>
+
+    <!-- The content to show the user in case of success/failure -->
+    <div class="container mx-auto mt-32 mb-20 sm:mt-20 lg:mt-32">
+      <div
+        class="w-3/4 mx-auto px-4 py-8 bg-gray-100 border-2 border-gray-200 text-center shadow-lg"
+      >
+        <h1
+          class="text-3xl text-primary block flex flex-col lg:flex-row lg:justify-center"
+        >
+          <!-- Depending on the state of success/failure show the respective icon -->
+          <!-- <img
+            src="./error-icon.svg"
+            class="block w-1/6 mb-4 mx-auto lg:m-0 lg:inline-block lg:w-10 lg:mr-6"
+            loading="eager"
+            width="3000"
+            height="2000"
+            alt="Error - Email not activated successfully"
+          /> -->
+          <img
+            src="./success-checkmark-icon.svg"
+            class="block w-1/6 mb-4 mx-auto lg:m-0 lg:inline-block lg:w-10 lg:mr-6"
+            loading="eager"
+            width="3000"
+            height="2000"
+            alt="Error - Email not activated successfully"
+          />
+
+          Your email has been activated successfully!
+          <!-- OR - depending on whether the activation succeeded or not! -->
+          <!-- Oops! We couldn't update your email - Some message here to tell the user whether to check his inbox again for a new message or not (We talked about this) -->
+        </h1>
+        <!-- Change the main message below as you see fit :) -->
+        <p class="mt-12">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
+          quisquam iure corporis veritatis accusamus animi.
+        </p>
+        <p class="text-lg mt-8">
+          Go to
+          <a
+            href="https://myshelf.netlify.app/login"
+            class="inline-block text-primary font-bold transition-all duration-500 ease-out hover:text-secondary"
+          >
+            Login page
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      'use strict';
+
+      // This part controls the responsive part of showing/hiding the sidetab of nav links -- don't modify!
+
+      const sideTab = document.querySelector('.side-tab');
+
+      const toggleSideTab = (targetBtn) => {
+        if (targetBtn.firstElementChild.classList.contains('menu-bars')) {
+          sideTab.classList.remove('invisible', 'translate-x-screen');
+          sideTab.classList.add('visible', 'translation-x-none');
+        } else if (
+          targetBtn.firstElementChild.classList.contains('close-x-icon')
+        ) {
+          sideTab.classList.remove('visible', 'translation-x-none');
+          sideTab.classList.add('invisible', 'translate-x-screen');
+        }
+      };
+    </script>
+  </body>
+</html>
