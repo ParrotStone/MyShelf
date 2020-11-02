@@ -2,10 +2,9 @@
 
 # tailwindcss compiled css(unnecessary since it's gonna get generated again on start/build again)
 /src/styles/styles.css
+/email-activation-back-end-ssr/dist/output.min.css
 
 # dependencies
-# /node_modules
-# /email-activation-back-end-ssr/node_modules
 node_modules
 /.pnp
 .pnp.js
