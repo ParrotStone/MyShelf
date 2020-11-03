@@ -7,16 +7,16 @@ import InputErrorMsg from './InputErrorMsg';
 import toast from 'cogo-toast';
 
 const validationSchema = yup.object({
-  email: yup
+  usernameOrEmail: yup
     .string()
-    .email('Invalid email address')
-    .required('Required'),
+    .required('Required')
+    .min(2, 'Too Short!'),
 });
 
 const ResetPasswordForm = (props) => {
   const formik = useFormik({
     initialValues: {
-      email: '',
+      usernameOrEmail: '',
     },
     validationSchema,
     onSubmit: (values) => {
@@ -32,21 +32,22 @@ const ResetPasswordForm = (props) => {
         <div className='bg-gray-100 py-12 px-6 border-2 border-gray-200 rounded w-3/4 lg:w-1/2 mx-auto'>
           <form onSubmit={formik.handleSubmit}>
             <div>
-              <label htmlFor='email' className='font-bold'>
-                Email
+              <label htmlFor='usernameOrEmail' className='font-bold'>
+                Username Or Email
               </label>
               <input
-                id='email'
-                name='email'
-                type='email'
+                id='usernameOrEmail'
+                name='usernameOrEmail'
+                type='text'
                 className={`bg-white appearance-none h-12 w-full border-2 border-primary rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.errors.email ? 'border-red-600' : ''
+                  formik.errors.usernameOrEmail ? 'border-red-600' : ''
                 }`}
-                placeholder='Email'
-                {...formik.getFieldProps('email')}
+                placeholder='Username Or Email'
+                {...formik.getFieldProps('usernameOrEmail')}
               />
-              {formik.touched.email && formik.errors.email ? (
-                <InputErrorMsg msg={formik.errors.email} />
+              {formik.touched.usernameOrEmail &&
+              formik.errors.usernameOrEmail ? (
+                <InputErrorMsg msg={formik.errors.usernameOrEmail} />
               ) : null}
             </div>
             <div className='mt-8'>

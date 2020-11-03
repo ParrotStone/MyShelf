@@ -44,7 +44,9 @@ const validationSchema = yup.object({
     .string()
     .min(10, 'Too Short!')
     .max(200, 'Bio must be 200 characters or less'),
-  acceptTerms: yup.boolean('Required').oneOf([true], 'You must accept '),
+  acceptTerms: yup
+    .boolean('Required')
+    .oneOf([true], 'You must accept to proceed'),
 });
 
 const SignupForm = (props) => {
@@ -211,14 +213,18 @@ const SignupForm = (props) => {
                 {...formik.getFieldProps('acceptTerms')}
               />
               <label htmlFor='acceptTerms' className='font-bold'>
-                I accept terms and conditions
+                I accept{' '}
+                <Link to='/terms-conditions' className='text-primary'>
+                  the terms and conditions
+                </Link>{' '}
+                &amp;{' '}
+                <Link to='/privacy-policy' className='text-primary'>
+                  privacy policy
+                </Link>
               </label>
               {formik.touched.acceptTerms && formik.errors.acceptTerms ? (
                 <p className='mr-'>
                   <InputErrorMsg msg={`${formik.errors.acceptTerms}`} />
-                  <Link to='terms-conditions' className='text-blue-600 text-sm'>
-                    the terms and conditions
-                  </Link>
                 </p>
               ) : null}
             </div>

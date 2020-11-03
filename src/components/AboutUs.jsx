@@ -1,6 +1,6 @@
 import React from 'react';
 import { a } from '@reach/router';
-import { AiFilltwitterCIrcle, AiFillGithub } from 'react-icons/ai';
+import { AiFillTwitterCircle, AiFillGithub } from 'react-icons/ai';
 import Nav from './common/Nav';
 
 const AboutUs = (props) => {
@@ -23,7 +23,7 @@ const AboutUs = (props) => {
                 href='https://twitter.com/@abdoalihuss'
                 className='inline-block mr-6'
               >
-                <AiFilltwitterCIrcle className='text-2xl text-primary' />
+                <AiFillTwitterCircle className='text-2xl text-primary' />
               </a>
               <a href='https://github.com/parrotstone' className='inline-block'>
                 <AiFillGithub className='text-2xl text-primary' />
@@ -44,7 +44,7 @@ const AboutUs = (props) => {
                 href='https://twitter.com/@a__ibrahiim'
                 className='inline-block mr-6'
               >
-                <AiFilltwitterCIrcle className='text-2xl text-primary' />
+                <AiFillTwitterCircle className='text-2xl text-primary' />
               </a>
               <a href='https://github.com/woodyinho' className='inline-block'>
                 <AiFillGithub className='text-2xl text-primary' />
