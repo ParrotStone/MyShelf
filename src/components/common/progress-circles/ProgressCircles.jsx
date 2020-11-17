@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaCheck } from 'react-icons/fa';
-import '../../styles/progressCirclesStyles.css';
+import './progressCirclesStyles.css';
 
-import generateArrFromNum from '../../utils/generateArrFromNum';
+import generateArrFromNum from '../../../utils/generateArrFromNum';
 
 const ProgressCircles = ({ currentStep, stepsNum, handleProgressChange }) => {
   const stepsArr = generateArrFromNum(stepsNum);

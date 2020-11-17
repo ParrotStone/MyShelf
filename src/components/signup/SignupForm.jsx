@@ -3,8 +3,9 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Link } from '@reach/router';
 import Nav from '../common/Nav';
-import ProgressCircles from '../common/ProgressCircles';
+import ProgressCircles from '../common/progress-circles/ProgressCircles';
 import InputErrorMsg from '../common/InputErrorMsg';
+import CustomCheckbox from '../common/custom-checkbox/CustomCheckbox';
 
 // REview this line here later on
 const validationSchema = yup.object({
@@ -73,19 +74,30 @@ const SignupForm = (props) => {
     console.log(step);
   };
 
-  console.log(formik);
+  const { touched, errors } = formik;
+
+  const isErrorFirstName = touched.firstName && errors.firstName;
+  const isErrorLastName = touched.lastName && errors.lastName;
+  const isErrorUsername = touched.username && errors.username;
+  const isErrorEmail = touched.email && errors.email;
+  const isErrorPassword = touched.password && errors.password;
+  const isErrorGender = touched.gender && errors.gender;
+  const isErrorBirthdate = touched.birthdate && errors.birthdate;
+  const isErrorWebsite = touched.website && errors.website;
+  const isErrorBio = touched.bio && errors.bio;
+  const isErrorAcceptTerms = touched.acceptTerms && errors.acceptTerms;
 
   return (
     <>
       <Nav />
       <div className='container mx-auto mt-10 text-gray-800     mb-56'>
         <h1 className='text-center text-5xl text-primary'>Sign Up!</h1>
-        <div className='bg-gray-100 py-12 px-6 w-3/4 lg:w-1/2 mx-auto border-2 border-gray-200 rounded'>
+        <div className='bg-gray-100 py-12 px-6 w-3/4 shadow-lg mx-auto border-2 border-gray-200 rounded lg:w-1/2'>
           <div className='mb-8'>
             <ProgressCircles
               currentStep={1}
               stepsNum={2}
-              handleProgressChange={(ev) => handleProgressChange(ev.target.id)}
+              handleProgressChange={(ev) => handleProgressChange(ev.target)}
             />
           </div>
           <form onSubmit={formik.handleSubmit}>
@@ -97,14 +109,13 @@ const SignupForm = (props) => {
                 id='firstName'
                 name='firstName'
                 className={`bg-white appearance-none h-12 w-full border-2 border-primary rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.errors.firstName ? 'border-red-600' : ''
+                  isErrorFirstName ? 'border-red-600' : ''
                 }`}
                 type='text'
                 placeholder='Jane'
-                autoFocus
                 {...formik.getFieldProps('firstName')}
               />
-              {formik.touched.firstName && formik.errors.firstName ? (
+              {isErrorFirstName ? (
                 <InputErrorMsg msg={formik.errors.firstName} />
               ) : null}
             </div>
@@ -116,13 +127,13 @@ const SignupForm = (props) => {
                 id='lastName'
                 name='lastName'
                 className={`bg-white appearance-none h-12 w-full border-2 border-primary rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.errors.lastName ? 'border-red-600' : ''
+                  isErrorLastName ? 'border-red-600' : ''
                 }`}
                 type='text'
                 placeholder='Doe'
                 {...formik.getFieldProps('lastName')}
               />
-              {formik.touched.lastName && formik.errors.lastName ? (
+              {isErrorLastName ? (
                 <InputErrorMsg msg={formik.errors.lastName} />
               ) : null}
             </div>
@@ -134,13 +145,13 @@ const SignupForm = (props) => {
                 id='username'
                 name='username'
                 className={`bg-white appearance-none h-12 w-full border-2 border-primary rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.errors.username ? 'border-red-600' : ''
+                  isErrorUsername ? 'border-red-600' : ''
                 }`}
                 type='text'
                 placeholder='Jane234'
                 {...formik.getFieldProps('username')}
               />
-              {formik.touched.username && formik.errors.username ? (
+              {isErrorUsername ? (
                 <InputErrorMsg msg={formik.errors.username} />
               ) : null}
             </div>
@@ -152,13 +163,13 @@ const SignupForm = (props) => {
                 id='email'
                 name='email'
                 className={`bg-white appearance-none h-12 w-full border-2 border-primary rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.errors.email ? 'border-red-600' : ''
+                  isErrorEmail ? 'border-red-600' : ''
                 }`}
                 type='email'
                 placeholder='jane@email.com'
                 {...formik.getFieldProps('email')}
               />
-              {formik.touched.email && formik.errors.email ? (
+              {isErrorEmail ? (
                 <InputErrorMsg msg={formik.errors.email} />
               ) : null}
             </div>
@@ -170,7 +181,7 @@ const SignupForm = (props) => {
                 id='password'
                 name='password'
                 className={`bg-white appearance-none h-12 w-full border-2 border-primary rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.errors.password ? 'border-red-600' : ''
+                  isErrorPassword ? 'border-red-600' : ''
                 }`}
                 type='password'
                 placeholder='************************'
@@ -181,7 +192,7 @@ const SignupForm = (props) => {
                   Make it as long and as crazy as you'd like
                 </span>
               ) : null}
-              {formik.touched.password && formik.errors.password ? (
+              {isErrorPassword ? (
                 <InputErrorMsg msg={formik.errors.password} />
               ) : null}
             </div>
@@ -189,47 +200,52 @@ const SignupForm = (props) => {
               <label htmlFor='gender' className='font-bold'>
                 Gender
               </label>
-              <input
-                id='gender'
+              <select
                 name='gender'
+                id='gender'
                 className={`bg-white appearance-none h-12 w-full border-2 border-primary rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.errors.gender ? 'border-red-600' : ''
+                  isErrorPassword ? 'border-red-600' : ''
                 }`}
-                type='radio'
-                {...formik.getFieldProps('gender')}
-              />
-              {formik.touched.gender && formik.errors.gender ? (
+              >
+                <option value='male'>Male</option>
+                <option value='female'>Female</option>
+                <option value='other'>Other</option>
+              </select>
+              {isErrorGender ? (
                 <InputErrorMsg msg={formik.errors.gender} />
               ) : null}
             </div>
             <div className='mt-12'>
-              <input
-                id='acceptTerms'
-                name='acceptTerms'
-                className={`bg-white checked:bg-primary checked:border-primary p-3 mr-4 border-2 border-primary focus:shadow-outline ${
-                  formik.errors.acceptTerms ? 'border-red-600' : ''
-                }`}
-                type='checkbox'
-                {...formik.getFieldProps('acceptTerms')}
-              />
-              <label htmlFor='acceptTerms' className='font-bold'>
-                I accept{' '}
-                <Link to='/terms-conditions' className='text-primary'>
-                  the terms and conditions
-                </Link>{' '}
-                &amp;{' '}
-                <Link to='/privacy-policy' className='text-primary'>
-                  privacy policy
-                </Link>
-              </label>
-              {formik.touched.acceptTerms && formik.errors.acceptTerms ? (
-                <p className='mr-'>
+              <div className='flex items-center'>
+                <CustomCheckbox
+                  id='acceptTerms'
+                  name='acceptTerms'
+                  className='bg-white p-2 mr-4 border-2 border-gray-500 rounded focus:shadow-outline '
+                  {...formik.getFieldProps('acceptTerms')}
+                />
+                <label
+                  htmlFor='acceptTerms'
+                  className='font-bold cursor-pointer'
+                >
+                  I accept{' '}
+                  <Link to='/terms-conditions' className='text-primary'>
+                    the terms and conditions
+                  </Link>{' '}
+                  &amp;{' '}
+                  <Link to='/privacy-policy' className='text-primary'>
+                    privacy policy
+                  </Link>
+                </label>
+              </div>
+              {isErrorAcceptTerms ? (
+                <p>
                   <InputErrorMsg msg={`${formik.errors.acceptTerms}`} />
                 </p>
               ) : null}
             </div>
             <div className='mt-12'>
               <button
+                disabled={Object.keys(formik.errors).length}
                 className={`${
                   Object.keys(formik.errors).length
                     ? 'opacity-50 cursor-not-allowed'

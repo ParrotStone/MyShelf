@@ -31,6 +31,9 @@ const Homepage = (props) => {
     },
   });
 
+  const isErrorSearchText =
+    formik.touched.searchText && formik.errors.searchText;
+
   // Check this code later on
   // ------------------------
   // useEffect(() => {
@@ -131,21 +134,20 @@ const Homepage = (props) => {
               <input
                 name='searchText'
                 className={`bg-gray-200 appearance-none h-12 w-full border-2 border-gray-600 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ${
-                  formik.touched.searchText && formik.errors.searchText
-                    ? 'border-red-600'
-                    : ''
+                  isErrorSearchText ? 'border-red-600' : ''
                 }`}
                 type='text'
                 placeholder='Book title...'
                 {...formik.getFieldProps('searchText')}
               />
-              {formik.touched.searchText && formik.errors.searchText ? (
+              {isErrorSearchText ? (
                 <InputErrorMsg msg={formik.errors.searchText} />
               ) : null}
             </div>
             <div className='w-full lg:w-1/4'>
               <button
                 type='submit'
+                disabled={Object.keys(formik.errors).length}
                 className={`${
                   formik.errors.searchText
                     ? 'opacity-50 cursor-not-allowed'
